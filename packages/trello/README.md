@@ -63,4 +63,4 @@ The following is an example of creating a trigger that will be fired each time t
 
   The action receives the Trello webhook payload as an input parameter.
 
-  For more information about the payload content, see the [Trello webhooks] https://developers.trello.com/page/webhooks).
+  For more information about the payload content, see the [Trello webhooks](https://developers.trello.com/page/webhooks).
