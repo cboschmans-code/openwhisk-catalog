@@ -53,7 +53,7 @@ The following is an example of creating a trigger that will be fired each time t
     --param description mydescription 
   ```
 
-3. Create a trigger by using your `myTrello/webhook` feed.
+2. Create a trigger by using your `myTrello/webhook` feed.
 
   ```
   wsk trigger create myTrelloTrigger --feed myTrello/webhook 
