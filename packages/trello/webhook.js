@@ -21,23 +21,20 @@ const needle = require('needle');
  *  Feed to create a webhook on Trello
  *
  *  @param {object} params - information about the trigger
- *  @param {string} APIKey  - trello API key
  *  @param {string} accessToken - trello API token
+ *  @param {string} APIKey  - trello API key
  *  @param {string} idModel -id of card, list, board
  *  @param {string} description - description of hook
  *  @return {object} whisk async
  */
 function main(params) {
-  var description = params.description;
+
   var accessToken = params.accessToken;
-  var APIkey =params.APIKey;
+  var APIKey =params.APIKey;
   var idModel=params.idModel;
+  var description = params.description;
 
-
-  var lifecycleEvent = params.lifecycleEvent;
-  var triggerName = params.triggerName.split("/");
-
-  // URL of the whisk system. The calls of github will go here.
+   // URL of the whisk system. The calls of github will go here.
   var urlHost = require('url').parse(process.env.__OW_API_HOST);
   var whiskCallbackUrl = urlHost.protocol + '//' + process.env.__OW_API_KEY + "@" + urlHost.host + '/api/v1/namespaces/' + encodeURIComponent(triggerName[1]) + '/triggers/' + encodeURIComponent(triggerName[2]);
 
@@ -45,21 +42,9 @@ function main(params) {
   var registrationEndpoint = 'https://api.trello.com/1/tokens/' + accessToken + '/webhooks;
   console.log("Using endpoint: " + registrationEndpoint);
 
-  if (lifecycleEvent === 'CREATE') {
-   // var events = params.events.split(',');
 
-   /* var body = {
-      name: 'web',
-      active: true,
-      events: events,
-      config: {
-        url: whiskCallbackUrl,
-        content_type: 'json'
-      }
-    };
-*/
     var promise = new Promise(function (resolve, reject) {
-      needle.post(registrationEndpoint+'?key='+APIkey, body, { 'json': true, description: description, callbackURL: whiskCallbackUrl, idModel: idModel }, function (error, response, body) {
+      needle.post(registrationEndpoint+'?key='+APIKey, body, { 'json': true, description: description, callbackURL: whiskCallbackUrl, idModel: idModel }, function (error, response, body) {
         if (error) {
           reject({
             response: response,
@@ -83,10 +68,10 @@ function main(params) {
     });
 
     return promise;
-  } else if (lifecycleEvent === 'DELETE') {
+ /*
     //list all the existing webhooks first.
     var deletePromise = new Promise(function (resolve, reject) {
-      needle.get(registrationEndpoint'?key='+APIkey, function (error, response, body) {
+      needle.get(registrationEndpoint'?key='+APIKey, function (error, response, body) {
 
         var foundWebhookToDelete = false;
 
@@ -103,7 +88,7 @@ function main(params) {
 
               console.log('DELETE Webhook : ' + body[i].description);
 
-              needle.delete(registrationEndpoint +'/' +body[i].id +'?key='+APIkey, null, function (error, response, body) {
+              needle.delete(registrationEndpoint +'/' +body[i].id +'?key='+APIKey, null, function (error, response, body) {
                 if (error) {
                   reject({
                     response: response,
@@ -140,5 +125,5 @@ function main(params) {
     });
 
     return deletePromise;
-  }
+  }*/
 }

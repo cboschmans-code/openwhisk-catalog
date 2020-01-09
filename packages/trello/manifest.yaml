@@ -32,6 +32,12 @@ project:
                         description: "Creates a webhook on trello to be notified on selected changes"
                         parameters: [
                             {
+                               "name": "accessToken",
+                               "required": true,
+                               "bindTime": true,
+                              "description": "personal server  token"
+                            },
+                            {
                                 "name":"APIKey",
                                 "required": true,
                                 "bindTime": true,
@@ -43,12 +49,7 @@ project:
                                 "bindTime": true,
                                 "description": "id of card, list, board ... "
                             },
-                            {
-                                "name": "accessToken",
-                                "required": true,
-                                "bindTime": true,
-                                "description": "personal server  token"
-                            },
+
                             {
                               "name": "description",
                               "required": true,

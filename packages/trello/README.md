@@ -25,18 +25,18 @@ The package includes the following feed:
 
 | Entity | Type | Parameters | Description |
 | --- | --- | --- | --- |
-| `/whisk.system/trello` | package | username, repository, accessToken | Interact with the Trello API |
-| `/whisk.system/trello/webhook` | feed | events, username, repository, accessToken | Fire trigger events on Trello activity |
+| `/whisk.system/trello` | package | | Interact with the Trello API |
+| `/whisk.system/trello/webhook` | feed | accessToken APIKey idModel description| Fire trigger events on Trello activity |
 
-Creating a package binding with the `APIKey`, `idModel`, `accessToken` and `description` values is suggested.  With binding, you don't need to specify the values each time that you use the feed in the package.
+Creating a package binding with the `accessToken`, `APIKey`, `idModel` and `description` values is suggested.  With binding, you don't need to specify the values each time that you use the feed in the package.
 
 ## Firing a trigger event with GitHub activity
 
 The `/whisk.system/trello/webhook` feed configures a service to fire a trigger when there is activity in a specified GitHub repository. The parameters are as follows:
 
+- `accessToken`: Your Trello personal server token.
 - `APIKey`: The  developer API key see [Trello API key security](https://developers.trello.com/docs/api-key-security).
 - `idModel`: id of card, list or board of interest [How to get the id of your model of interest](https://stackoverflow.com/questions/26552278/trello-api-getting-boards-lists-cards-information)
-- `accessToken`: Your Trello personal server token. 
 - `description`: description of your webhook
 
 The following is an example of creating a trigger that will be fired each time that there is a new commit to a GitHub repository.
@@ -47,9 +47,9 @@ The following is an example of creating a trigger that will be fired each time t
 
   ```
   wsk package bind /whisk.system/trello myTrello \
-    --param APIKey 12gh457hg887hg45 \
-    --param idModel 1d221fg4551 \
     --param accessToken 48gjj874gdf545s12 \
+    --param APIKey 12gh457hg887hg45 \
+    --param idModel 1d221fg4551 \    
     --param description mydescription 
   ```
 
