@@ -30,7 +30,7 @@ const needle = require('needle');
 function main(params) {
   var description = params.description;
   var accessToken = params.accessToken;
-  var APIkey =params.APIkey;
+  var APIkey =params.APIKey;
   var idModel=params.idModel;
 
 

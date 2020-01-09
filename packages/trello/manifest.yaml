@@ -47,13 +47,13 @@ project:
                                 "name": "accessToken",
                                 "required": true,
                                 "bindTime": true,
-                                "description": "personal server  token",
-                                                           },
+                                "description": "personal server  token"
+                            },
                             {
                               "name": "description",
                               "required": true,
                               "bindTime": true,
-                              "description": "description of webhook ",
+                              "description": "description of webhook "
                             }
                         ]
                         sampleInput: {

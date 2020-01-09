@@ -47,9 +47,9 @@ The following is an example of creating a trigger that will be fired each time t
 
   ```
   wsk package bind /whisk.system/trello myTrello \
-    --param APIKey 1245788745 \
-    --param idModel 12214551 \
-    --param accessToken 4887454512 \
+    --param APIKey 12gh457hg887hg45 \
+    --param idModel 1d221fg4551 \
+    --param accessToken 48gjj874gdf545s12 \
     --param description mydescription 
   ```
 
@@ -63,4 +63,4 @@ The following is an example of creating a trigger that will be fired each time t
 
   The action receives the Trello webhook payload as an input parameter.
 
-  For more information about the payload content, see the [Trello webhooks](https://developers.trello.com/page/webhooks).
+  For more information about the payload content, see  [Trello webhooks](https://developers.trello.com/page/webhooks).
